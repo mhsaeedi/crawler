@@ -1,0 +1,32 @@
+spring:
+    kafka:
+        template:
+            default-topic: analyze_task_topic
+        producer:
+            bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+            key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.apache.kafka.common.serialization.StringSerializer
+            acks: all
+            properties:
+                enable.idempotence: true
+        consumer:
+            bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+            key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+        admin:
+            properties:
+                bootstrap.servers: localhost:9092,localhost:9093,localhost:9094
+
+
+
+crawler:
+    config:
+        path-to-directory: /home/momo/
+        chunk-size: '1000'
+        max-task-size: '10'
+    redis:
+        host-name: localhost
+        port: '6379'
+        password: ''
+        database: '0'
